@@ -1,0 +1,113 @@
+settings:
+  token_env: TELEGRAM_TOKEN
+  locales_dir: locales
+  long_poller:
+    timeout: "10s"
+commands:
+  start: "{{ text `cmd_start` }}"
+  help: "{{ text `cmd_help` }}"
+  settings: "{{ text `cmd_settings` }}"
+  new_dog: "{{ text `cmd_new_dog` }}"
+  cur_dog: "{{ text `cmd_cur_dog` }}"
+  share_dog_for_reader: "{{ text `cmd_share_dog_for_reader` }}"
+  share_dog_for_owner: "{{ text `cmd_share_dog_for_owner` }}"
+  unshare_all_dogs: "{{ text `cmd_unsubsribe_all_dogs` }}"
+  unsubscribe: "{{ text `cmd_unsubscribe` }}"
+  actions: "{{ text `cmd_action` }}"
+
+buttons:
+  lang: &lang
+    unique: lang
+  lang_ru:
+    <<: *lang
+    callback_data: "ru"
+    text: 🇷🇺
+  lang_en:
+    <<: *lang
+    callback_data: "en"
+    text: 🇬🇧
+
+  action: &action
+    unique: action
+  action_feed:
+    <<: *action
+    callback_data: "action_feed"
+    text: 🍼
+  action_yum:
+    <<: *action
+    callback_data: "action_yum"
+    text: 🍖
+  action_vacine:
+    <<: *action
+    callback_data: "action_vacine"
+    text: 💉
+  action_weigh:
+    <<: *action
+    callback_data: "action_weigh"
+    text: ⚖️
+  action_shit_detected:
+    <<: *action
+    callback_data: "action_shit_detected"
+    text: 🔎💩
+  action_shit_removed:
+    <<: *action
+    callback_data: "action_shit_removed"
+    text: 🧽💩
+  action_pee_detected:
+    <<: *action
+    callback_data: "action_pee_detected"
+    text: 🔎💦
+  action_pee_removed:
+    <<: *action
+    callback_data: "action_pee_removed"
+    text: 🧽💦
+  action_play_start:
+    <<: *action
+    callback_data: "action_play_start"
+    text: 🎾
+  action_play_end:
+    <<: *action
+    callback_data: "action_play_end"
+    text: 🎾🛑
+  action_teach_start:
+    <<: *action
+    callback_data: "action_teach_start"
+    text: 📚
+  action_teach_end:
+    <<: *action
+    callback_data: "action_teach_end"
+    text: 📚🛑
+  action_sleep_start:
+    <<: *action
+    callback_data: "action_sleep_start"
+    text: 💤
+  action_sleep_end:
+    <<: *action
+    callback_data: "action_sleep_end"
+    text: 💤🛑
+  action_walk_start:
+    <<: *action
+    callback_data: "action_walk_start"
+    text: 🐕🚶
+  action_walk_end:
+    <<: *action
+    callback_data: "action_walk_end"
+    text: 🐕🚶🛑
+markups:
+  settings:
+    - [lang_ru, lang_en]
+  action:
+    - [action_feed, action_yum, action_vacine, action_weigh]
+    - [
+        action_shit_detected,
+        action_shit_removed,
+        action_pee_detected,
+        action_pee_removed,
+      ]
+    - [
+        action_play_start,
+        action_teach_start,
+        action_sleep_start,
+        action_walk_start,
+      ]
+    - [action_play_end, action_teach_end, action_sleep_end, action_walk_end]

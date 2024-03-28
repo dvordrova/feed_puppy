@@ -1,0 +1,160 @@
+settings_msg: |-
+  Settings
+
+start_msg: |-
+  Hello, this is a helper bot for collecting analytics for your dog! Only with good intentions
+
+subcription_note_reader: |-
+  You have just subscribed to updates about the dog {{ .YourDog }}
+  You can register a new dog using the /new_dog command
+
+subcription_note_owner: |-
+  You can also note what's happening with your pet {{ .YourDog }}
+
+register_new_dog: |-
+  To register your dog, send a message in the format
+  `name, date of birth, breed, gender`
+  For example `Barbos, 30.12.2013, Labrador, male`
+
+start_with_dog_reader: |-
+  {{ text `start_msg` . }}
+  {{ text `subcription_note_reader` . }}
+
+start_with_dog_owner: |-
+  {{ text `start_msg` . }}
+  {{ text `subcription_note_reader` . }}
+  {{ text `subcription_note_owner` . }}
+
+start_without_dog: |-
+  {{ text `start_msg` . }}
+  {{ text `register_new_dog` . }}
+
+msg_new_dog_created: |-
+  Successfully registered: {{ .DogName }}, {{ .DogDaysFromBirth }} days old
+  You can share dog information with just interested individuals using the /share_dog_for_reader command
+  You can share the dog with another owner using the /share_dog_for_owner command
+
+action_feed_text_needed: |-
+  Write in text how many grams of food were given
+
+action_yum_text_needed: |-
+  Write in text what treat was given
+
+action_weigh_text_needed: |-
+  Write in text how many kilograms were measured
+
+action_feed: |-
+  fed
+
+action_yum: |-
+  gave a treat
+
+action_vacine: |-
+  vaccinated
+
+action_weigh: |-
+  weighed
+
+action_shit_detected: |-
+  detected poop
+
+action_shit_removed: |-
+  removed poop
+
+action_pee_detected: |-
+  detected pee
+
+action_pee_removed: |-
+  removed pee
+
+action_play_start: |-
+  started playing with
+
+action_play_end: |-
+  finished playing with
+
+action_teach_start: |-
+  started teaching
+
+action_teach_end: |-
+  finished teaching
+action_sleep_start: |-
+  noticed that is sleeping
+action_sleep_end: |-
+  noticed that woke up
+action_walk_start: |-
+  took for a walk
+action_walk_end: |-
+  returned from a walk
+
+msg_action_tmpl_add_info: |-
+  {{ .DateTime }}: {{ .UserName }} {{ text .Action }} {{ .DogName }}: {{ .AddInfo }}
+
+msg_action_tmpl: |-
+  {{ .DateTime }}: {{ .UserName }} {{ text .Action }} {{ .DogName }}
+
+msg_share_dog_for_owner: |-
+  To share with the owner of {{ .DogName }}, forward him this link or message
+  They will have the ability to log actions with the dog
+  t.me/feed_puppy_bot?start={{ .Hash }}
+
+msg_share_dog_for_reader: |-
+  To share with someone interested in {{ .DogName }}, forward them this link or message
+  They will receive notifications about actions with the dog
+  t.me/feed_puppy_bot?start={{ .Hash }}
+
+lang_setted: |-
+  The selected language has been set
+
+msg_help: |-
+  Decoding action symbols
+
+  🍼 - feeding
+  🍖 - treat
+  💉 - vaccine
+  ⚖️ - weighing
+  🔎💩 - poop detected
+  🧽💩 - poop removed
+  🔎💦 - pee detected
+  🧽💦 - pee removed
+  🎾 - play started
+  🎾🛑 - play ended
+  📚 - training started
+  📚🛑 - training ended
+  💤 - sleep started
+  💤🛑 - sleep ended
+  🐕🚶- walk started
+  🐕🚶🛑 - walk ended
+
+cmd_start: |-
+  Start command
+
+cmd_help: |-
+  Decoding action symbols
+
+cmd_settings: |-
+  Settings
+
+cmd_new_dog: |-
+  Register a new dog
+
+cmd_cur_dog: |-
+  Choose the current dog
+
+cmd_share_dog_for_owner: |-
+  Share the dog with another owner
+
+cmd_share_dog_for_reader: |-
+  Share the dog with an interested person
+
+cmd_unsubsribe_all_dogs: |-
+  Unsubscribe everyone from all your dogs
+
+cmd_unsubscribe: |-
+  Unsubscribe from the dog
+
+cmd_action: |-
+  Choose actions [debug]
+
+msg_choose_action: |-
+  Choose an action
