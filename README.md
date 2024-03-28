@@ -30,8 +30,8 @@ TELEGRAM_TOKEN=$TELEGRAM_TOKEN air
 
 7. check your base with sqlite3
 
-8. deploy it whenever you want
-
 ```bash
 sqlite3 -readonly database.sqlite3
 ```
+
+8. deploy it whenever you want
