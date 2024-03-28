@@ -72,7 +72,7 @@ func CreateApp(config string) *App {
 	bot.Handle("/share_dog_for_reader", handler.OnShareDogForReader)
 	bot.Handle("/unshare_all_dogs", handler.OnUnshareAllDogs)
 	bot.Handle("/unsubscribe", handler.OnUnsubscribe)
-	bot.Handle("/action", handler.OnActionCommand)
+	bot.Handle("/actions", handler.OnActionCommand)
 
 	bot.Handle(lt.Callback("lang"), handler.OnLang)
 	bot.Handle(lt.Callback("action"), handler.OnAction)
