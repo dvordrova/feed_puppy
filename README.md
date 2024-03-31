@@ -18,7 +18,7 @@ read -s TELEGRAM_TOKEN
 go install github.com/cosmtrek/air@latest
 ```
 
-5. [https://docs.sqlc.dev/en/latest/overview/install.html](install) sqlc for generating code from sql
+5. [install](https://docs.sqlc.dev/en/latest/overview/install.html) sqlc for generating code from sql
 
 6. Run migrations and start the bot with air help
 
