@@ -88,10 +88,10 @@ action_walk_end: |-
   пришел с прогулки
 
 msg_action_tmpl_add_info: |-
-  {{ .DateTime }}: {{ .UserName }} {{ text .Action }} {{ .DogName }}: {{ .AddInfo }}
+  {{ .UserName }} {{ text .Action }} {{ .DogName }}: {{ .AddInfo }}
 
 msg_action_tmpl: |-
-  {{ .DateTime }}: {{ .UserName }} {{ text .Action }} {{ .DogName }}
+  {{ .UserName }} {{ text .Action }} {{ .DogName }}
 
 msg_share_dog_for_owner: |-
   Чтобы поделиться с хозяином {{ .DogName }}, перешлите ему эту ссылку или это сообщение
