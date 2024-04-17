@@ -88,10 +88,10 @@ action_walk_end: |-
   returned from a walk
 
 msg_action_tmpl_add_info: |-
-  {{ .DateTime }}: {{ .UserName }} {{ text .Action }} {{ .DogName }}: {{ .AddInfo }}
+  {{ .UserName }} {{ text .Action }} {{ .DogName }}: {{ .AddInfo }}
 
 msg_action_tmpl: |-
-  {{ .DateTime }}: {{ .UserName }} {{ text .Action }} {{ .DogName }}
+  {{ .UserName }} {{ text .Action }} {{ .DogName }}
 
 msg_share_dog_for_owner: |-
   To share with the owner of {{ .DogName }}, forward him this link or message
