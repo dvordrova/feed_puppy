@@ -4,34 +4,34 @@ Storage - sqlite
 
 # Fast start
 
-1. Create a new bot with BotFather
-2. Copy the token
-3. Save token as a temporary env for start
+1. Use golang 1.22
+2. Create a new bot with [BotFather](https://t.me/BotFather)
+3. Save token as a temporary env for start. Copy paste next command:
 
 ```bash
 read -s TELEGRAM_TOKEN
 ```
 
-4. install air for fast reload of your app
+4. Copy the bot's token into the input field of the previous command once and press enter (pasted token will be invisible)
+
+5. [install](https://docs.sqlc.dev/en/latest/overview/install.html) sqlc for generating code from sql. For macos brew users just copy paste next command:
 
 ```bash
-go install github.com/cosmtrek/air@latest
+brew install sqlc
 ```
 
-5. [install](https://docs.sqlc.dev/en/latest/overview/install.html) sqlc for generating code from sql
-
-6. Run migrations and start the bot with air help
+6. Run migrations and start the bot with air help. Just copy paste next command:
 
 ```bash
-TELEGRAM_TOKEN=$TELEGRAM_TOKEN air
+TELEGRAM_TOKEN=$TELEGRAM_TOKEN go run github.com/cosmtrek/air@latest
 ```
 
-6. Go to your bot and type /start
+7. Go to your bot and type /start
 
-7. check your base with sqlite3
+8. check your base with sqlite3
 
 ```bash
 sqlite3 -readonly database.sqlite3
 ```
 
-8. deploy it whenever you want
+9. deploy it whereever you want
