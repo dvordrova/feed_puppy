@@ -97,6 +97,7 @@ func (h *Handler) OnAction(c tele.Context) (err error) {
 		err = c.Send(
 			h.layout.Text(c, "msg_choose_action"),
 			h.layout.Markup(c, "action"),
+			tele.Silent,
 		)
 	}
 	return

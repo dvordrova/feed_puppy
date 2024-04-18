@@ -15,12 +15,13 @@ func (h *Handler) OnSettings(c tele.Context) error {
 	return c.Send(
 		h.layout.Text(c, "settings_msg"),
 		h.layout.Markup(c, "settings"),
+		tele.Silent,
 	)
 }
 
 func (h *Handler) OnHelp(c tele.Context) error {
 	defer c.Bot().Delete(c.Message())
-	return c.Send(h.layout.Text(c, "msg_help"))
+	return c.Send(h.layout.Text(c, "msg_help"), tele.Silent)
 }
 
 func (h *Handler) OnStart(c tele.Context) (err error) {
@@ -44,12 +45,12 @@ func (h *Handler) OnStart(c tele.Context) (err error) {
 
 	// defer c.Bot().Delete(c.Message())
 	if len(cmd) == 1 {
-		return c.Send(h.layout.Text(c, "start_without_dog"))
+		return c.Send(h.layout.Text(c, "start_without_dog"), tele.Silent)
 	}
 
 	invite, err := qtx.GetInvite(ctx, cmd[1])
 	if err == sql.ErrNoRows {
-		return c.Send(h.layout.Text(c, "start_without_dog"))
+		return c.Send(h.layout.Text(c, "start_without_dog"), tele.Silent)
 	}
 
 	qtx.MarkInviteUsed(ctx, invite.ID)
@@ -91,10 +92,12 @@ func (h *Handler) OnStart(c tele.Context) (err error) {
 			}{
 				YourDog: dog.Name,
 			}),
+			tele.Silent,
 		)
 		return c.Send(
 			h.layout.Text(c, "msg_choose_action"),
 			h.layout.Markup(c, "action"),
+			tele.Silent,
 		)
 	}
 	qtx.NewSubscription(ctx, database.NewSubscriptionParams{

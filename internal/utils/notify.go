@@ -15,7 +15,7 @@ func NotifyAllDogSubscribers(bot *tele.Bot, ctx context.Context, q *database.Que
 	}
 
 	for _, subscriber := range subscribers {
-		if _, err := bot.Send(&tele.User{ID: subscriber.TelegramID}, notification); err != nil {
+		if _, err := bot.Send(&tele.User{ID: subscriber.TelegramID}, notification, tele.Silent); err != nil {
 			log.Println("can't send notification to user: ", err)
 		}
 	}

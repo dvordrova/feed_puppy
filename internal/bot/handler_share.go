@@ -29,6 +29,7 @@ func (h *Handler) OnShareDogForOwner(c tele.Context) error {
 			Hash:    hash,
 			DogName: dog.Name,
 		},
+		tele.Silent,
 	))
 }
 
@@ -52,17 +53,18 @@ func (h *Handler) OnShareDogForReader(c tele.Context) error {
 			Hash:    hash,
 			DogName: dog.Name,
 		},
+		tele.Silent,
 	))
 }
 
 func (h *Handler) OnUnshareAllDogs(c tele.Context) error {
 	log.Println("/unshare_all_dogs")
 	defer c.Bot().Delete(c.Message())
-	return c.Send(h.layout.Text(c, "msg_unshare_all_dogs"))
+	return c.Send(h.layout.Text(c, "msg_unshare_all_dogs"), tele.Silent)
 }
 
 func (h *Handler) OnUnsubscribe(c tele.Context) error {
 	log.Println("/unsubscribe")
 	defer c.Bot().Delete(c.Message())
-	return c.Send(h.layout.Text(c, "msg_unsubscribe"))
+	return c.Send(h.layout.Text(c, "msg_unsubscribe"), tele.Silent)
 }

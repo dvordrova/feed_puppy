@@ -50,7 +50,7 @@ func (h *Handler) OnText(c tele.Context) (err error) {
 		}
 		dogParams := strings.Split(c.Message().Text, ",")
 		if len(dogParams) != 4 {
-			return c.Send(h.layout.Text(c, "register_new_dog"))
+			return c.Send(h.layout.Text(c, "register_new_dog"), tele.Silent)
 		}
 		caser := cases.Title(language.Und)
 		dogNameStr := caser.String(strings.TrimSpace(dogParams[0]))
@@ -60,13 +60,13 @@ func (h *Handler) OnText(c tele.Context) (err error) {
 
 		dogSex, ok := mapMaleFemale[dogSexStr]
 		if !ok {
-			return c.Send(h.layout.Text(c, "register_new_dog"))
+			return c.Send(h.layout.Text(c, "register_new_dog"), tele.Silent)
 		}
 
 		layout := "02.01.2006" // Day.Month.Year layout
 		dogBirthDate, err = time.Parse(layout, dogBirthDateStr)
 		if err != nil {
-			return c.Send(h.layout.Text(c, "register_new_dog"))
+			return c.Send(h.layout.Text(c, "register_new_dog"), tele.Silent)
 		}
 		dogId, err = qtx.NewDog(ctx, database.NewDogParams{
 			Name:      dogNameStr,
@@ -109,13 +109,16 @@ func (h *Handler) OnText(c tele.Context) (err error) {
 			}{
 				DogName:          dogNameStr,
 				DogDaysFromBirth: daysFromBirth,
-			}))
+			}),
+			tele.Silent,
+		)
 		if err != nil {
 			return
 		}
 		return c.Send(
 			h.layout.Text(c, "msg_choose_action"),
 			h.layout.Markup(c, "action"),
+			tele.Silent,
 		)
 	}
 	log.Println(user.State)
@@ -145,7 +148,11 @@ func (h *Handler) OnText(c tele.Context) (err error) {
 		if err = tx.Commit(); err != nil {
 			return err
 		}
-		utils.NotifyAllDogSubscribers(c.Bot(), ctx, h.queries, dog.ID,
+		utils.NotifyAllDogSubscribers(
+			c.Bot(),
+			ctx,
+			h.queries,
+			dog.ID,
 			h.layout.Text(c, "msg_action_tmpl_add_info", struct {
 				DateTime string
 				DogName  string
@@ -158,10 +165,12 @@ func (h *Handler) OnText(c tele.Context) (err error) {
 				UserName: c.Sender().FirstName,
 				AddInfo:  addInfo,
 				Action:   user.State,
-			}))
+			}),
+		)
 		return c.Send(
 			h.layout.Text(c, "msg_choose_action"),
 			h.layout.Markup(c, "action"),
+			tele.Silent,
 		)
 	}
 
